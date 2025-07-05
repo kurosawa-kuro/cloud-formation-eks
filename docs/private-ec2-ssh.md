@@ -56,7 +56,42 @@ Internet
 - 既存のキーペアが作成済み
 - 東京リージョン (ap-northeast-1) で使用
 
-### 2. デプロイ
+### 2. 自動化スクリプト（推奨）
+
+#### 環境変数ファイルの作成
+
+```bash
+# 環境変数ファイルを作成
+./script/create-env.sh <environment> <stack-name> <key-name> <allowed-cidr> [instance-type]
+
+# 例
+./script/create-env.sh dev private-ec2-stack my-key-pair 61.27.85.98/32 t3.micro
+```
+
+#### 改善されたデプロイスクリプト
+
+```bash
+# テンプレートの検証
+./script/deploy.sh --env dev --validate-only
+
+# スタックのデプロイ
+./script/deploy.sh --env dev --deploy
+
+# スタックの削除
+./script/deploy.sh --env dev --destroy
+```
+
+#### 接続テスト自動化
+
+```bash
+# Bastionホストの接続テスト
+./script/connection-test.sh --env dev --bastion-only
+
+# 完全な接続テスト（Bastion + プライベート）
+./script/connection-test.sh --env dev --full-test
+```
+
+### 3. 従来のデプロイ方法
 
 #### 自動デプロイスクリプトを使用
 
