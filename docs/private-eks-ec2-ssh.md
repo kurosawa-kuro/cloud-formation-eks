@@ -1,4 +1,6 @@
-# Private EC2 with Bastion Host - CloudFormation テンプレート
+# Private EKS with Bastion Host - CloudFormation テンプレート
+
+下記で設置したプライベートサブネットEC2をEKSに差し替える
 
 ## 概要
 
